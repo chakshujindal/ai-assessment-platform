@@ -1,0 +1,29 @@
+# Secrets and local config
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Local data: SQLite databases and webcam snapshots
+backend/data/
+*.db
+*.sqlite3
+
+# Frontend
+node_modules/
+frontend/dist/
+frontend/coverage/
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/

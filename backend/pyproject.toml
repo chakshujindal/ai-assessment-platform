@@ -1,0 +1,50 @@
+[project]
+name = "ai-assessment-platform"
+version = "0.1.0"
+description = "AI-powered hiring assessments and practice quizzes: LLM question generation, rubric grading, consented browser proctoring."
+readme = "../README.md"
+license = "MIT"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "anthropic==2.3.0",
+    "argon2-cffi==25.1.0",
+    "email-validator==2.3.0",
+    "fastapi==0.162.0",
+    "openai==3.42.1",
+    "pydantic==2.14.2",
+    "pydantic-settings==2.16.2",
+    "pyjwt==2.15.1",
+    "python-multipart==0.0.33",
+    "slowapi==0.1.10",
+    "sqlalchemy==2.1.6",
+    "uvicorn==0.54.0",
+]
+
+[project.optional-dependencies]
+postgres = ["psycopg[binary]==3.3.6"]
+
+[dependency-groups]
+dev = [
+    "httpx2==2.16.0",
+    "pytest==9.2.0",
+    "pytest-cov==7.1.0",
+    "ruff==0.17.3",
+]
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "BLE", "RUF"]
+ignore = ["SIM905"]  # "a b c".split() reads better than long word lists
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--cov=app --cov-report=term-missing --cov-fail-under=95"
+
+[tool.coverage.run]
+branch = true
